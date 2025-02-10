@@ -1,21 +1,11 @@
 import { useParams } from "react-router-dom"
-import { Product } from "../../app/modules/product";
-import { useEffect, useState } from "react";
 import { Button, Divider, Grid2, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
+import { useFetchProductDetailsQuery } from "./catalogApi";
 
 export default function ProductDetails() {
     const { id } = useParams();
-    const [product, setProduct] = useState<Product | null>(null);
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/api/products/${id}`)
-            .then(res => res.json())
-            .then(data => setProduct(data))
-            .catch(error => console.log(error))
-
-
-    }, [id]);
-    if (!product) return <div>Loading...</div>
+    const { data: product, isLoading } = useFetchProductDetailsQuery(id ? +id : 0)
+    if (!product || isLoading) return <div>Loading...</div>
 
     const productDetails = [
         { lable: 'Name', value: product.name },
@@ -38,7 +28,7 @@ export default function ProductDetails() {
 
                 <TableContainer>
 
-                    <Table sx={{'& td': {fontSize: '1rem'}}}>
+                    <Table sx={{ '& td': { fontSize: '1rem' } }}>
                         <TableBody>
 
                             {productDetails.map((detail, index) => (
@@ -71,7 +61,7 @@ export default function ProductDetails() {
                     </Grid2>
                     <Grid2 size={6}>
                         <Button
-                        sx={{height: '55px'}}
+                            sx={{ height: '55px' }}
                             color='primary'
                             size='large'
                             variant='contained'

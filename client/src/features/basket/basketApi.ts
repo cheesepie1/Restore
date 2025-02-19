@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithErrorHandling } from "../../app/api/baseApi";
-import { Basket, Item } from "../../app/modules/basket";
-import { Product } from "../../app/modules/product";
+import { Basket, Item } from "../../app/models/basket";
+import { Product } from "../../app/models/product";
 
 function isBasketItem(product: Product | Item): product is Item {
     return (product as Item).quantity != undefined;

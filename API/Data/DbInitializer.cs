@@ -1,6 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace API.Data;
 
@@ -13,18 +15,44 @@ public class DbInitializer
         var context = scope.ServiceProvider.GetRequiredService<StoreContext>()
           ?? throw new InvalidOperationException("Fail to retrive store context");
 
-        SeedData(context);
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>()
+          ?? throw new InvalidOperationException("Fail to retrive user manager");
+
+        SeedData(context, userManager);
     }
 
-    private static void SeedData(StoreContext context)
+    private static async Task SeedData(StoreContext context, UserManager<User> userManager)
     {
         context.Database.Migrate();
+        if (!userManager.Users.Any())
+        {
+            var user = new User
+            {
+                UserName = "bob@test.com",
+                Email = "bob@test.com"
 
-        if(context.Products.Any()) return;
+            };
+
+            await userManager.CreateAsync(user, "Pa$$w0rd");
+            await userManager.AddToRoleAsync(user, "Member");
+
+            var admin = new User
+            {
+                UserName = "admin@test.com",
+                Email = "admin@test.com"
+
+            };
+
+            await userManager.CreateAsync(admin, "Pa$$w0rd");
+            await userManager.AddToRolesAsync(admin, ["Member", "Admin"]);
+        }
+
+
+        if (context.Products.Any()) return;
 
         var products = new List<Product>
         {
-            		new() {
+                    new() {
                     Name = "Angular Speedster Board 2000",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",

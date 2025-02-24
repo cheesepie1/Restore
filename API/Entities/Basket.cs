@@ -8,6 +8,8 @@ public class Basket
     public int Id { get; set; }
     public required string BasketId { get; set; }
     public List<BasketItem> Items { get; set; } = [];
+    public string? ClientSecret { get; set; }
+    public string? PaymentIntentId { get; set; }
 
     public void AddItem(Product product, int quantity)
     {
@@ -24,7 +26,7 @@ public class Basket
 
             });
         }
-        else 
+        else
         {
             existingItem.Quantity += quantity;
         }
@@ -37,7 +39,7 @@ public class Basket
         if (item == null) return;
 
         item.Quantity -= quantity;
-        if(item.Quantity <= 0) Items.Remove(item);
+        if (item.Quantity <= 0) Items.Remove(item);
     }
 
 

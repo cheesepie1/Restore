@@ -8,6 +8,7 @@ import { basketApi } from "../../features/basket/basketApi"
 import { catalogSlice } from "../../features/catalog/catalogSlice"
 import { accountApi } from "../../features/account/accountApi"
 import { checkoutApi } from "../../features/checkout/CheckoutApi"
+import { orderApi } from "../../features/orders/orderApi"
 
 export function configureTheStore() {
     return legacy_createStore(countereducer)
@@ -20,22 +21,24 @@ export const store = configureStore({
         [basketApi.reducerPath]: basketApi.reducer,
         [accountApi.reducerPath]: accountApi.reducer,
         [checkoutApi.reducerPath]: checkoutApi.reducer,
+        [orderApi.reducerPath]: orderApi.reducer,
         counter: counterSlice.reducer,
-        ui:uiSlice.reducer,
+        ui: uiSlice.reducer,
         catalog: catalogSlice.reducer
     },
-    middleware:(getDefaultMiddleware) =>
+    middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
-            catalogApi.middleware, 
+            catalogApi.middleware,
             errorApi.middleware,
             basketApi.middleware,
             accountApi.middleware,
             checkoutApi.middleware,
+            orderApi.middleware,
         )
 });
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
- export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
- export const useAppSelector = useSelector.withTypes<RootState>()
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<RootState>()

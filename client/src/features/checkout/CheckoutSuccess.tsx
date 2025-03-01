@@ -1,7 +1,7 @@
 import { Box, Button, Container, Divider, Paper, Typography } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { Order } from "../../app/models/order";
-import { currencyFormat } from "../../lib/util";
+import { AddressString, currencyFormat, PaymentString } from "../../lib/util";
 
 export default function CheckoutSuccess() {
   const { state } = useLocation();
@@ -9,17 +9,17 @@ export default function CheckoutSuccess() {
 
   if (!order) return <Typography>Problem accessing the order</Typography>
 
-  const addressSring = () => {
-    const address = order.shippingAddress;
+  // const addressSring = () => {
+  //   const address = order.shippingAddress;
 
-    return `${address?.name}, ${address?.line1}, ${address?.city}, ${address?.state}, 
-            ${address?.postal_code}, ${address?.country}`
-  }
-  const paymentString = () => {
-    const card = order.paymentSummary;
-    return `${card?.brand?.toUpperCase()}, **** **** **** ${card?.last4},    
-            Exp ${card?.exp_month}/${card?.exp_year}`
-  }
+  //   return `${address?.name}, ${address?.line1}, ${address?.city}, ${address?.state}, 
+  //           ${address?.postal_code}, ${address?.country}`
+  // }
+  // const paymentString = () => {
+  //   const card = order.paymentSummary;
+  //   return `${card?.brand?.toUpperCase()}, **** **** **** ${card?.last4},    
+  //           Exp ${card?.exp_month}/${card?.exp_year}`
+  // }
 
   return (
     <Container maxWidth='md'>
@@ -48,7 +48,7 @@ export default function CheckoutSuccess() {
 
             </Typography>
             <Typography variant="body2" fontWeight='bold'>
-              {paymentString()}
+              {PaymentString(order)}
             </Typography>
           </Box>
           <Divider />
@@ -58,7 +58,7 @@ export default function CheckoutSuccess() {
 
             </Typography>
             <Typography variant="body2" fontWeight='bold'>
-              {addressSring()}
+              {AddressString(order.shippingAddress)}
             </Typography>
           </Box>
           <Divider />

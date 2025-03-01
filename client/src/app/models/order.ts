@@ -28,6 +28,9 @@ export interface OrderItem {
     itemOrdered: ItemOrdered
     price: number
     quantity: number
+    name: string
+    pictureUrl : string
+    
 }
 
 export interface ItemOrdered {

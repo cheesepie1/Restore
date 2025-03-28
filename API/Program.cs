@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnections"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnections"));
 });
 
 builder.Services.AddCors();
@@ -30,6 +30,10 @@ var app = builder.Build();
 
 //configure the http request pipeline;
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseCors(opt =>
 {
     opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
@@ -41,7 +45,8 @@ app.UseAuthorization();
 // Configure the HTTP request pipeline.
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<User>(); // api/login
+app.MapFallbackToController("Index", "Fallback");
 
-DbInitializer.InitDb(app);
+await DbInitializer.InitDb(app);
 
 app.Run();

@@ -8,7 +8,7 @@ namespace API.Data;
 
 public class DbInitializer
 {
-    public static void InitDb(WebApplication app)
+    public static async Task InitDb(WebApplication app)
     {
         using var scope = app.Services.CreateScope();
 
@@ -18,7 +18,7 @@ public class DbInitializer
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>()
           ?? throw new InvalidOperationException("Fail to retrive user manager");
 
-        SeedData(context, userManager);
+        await SeedData(context, userManager);
     }
 
     private static async Task SeedData(StoreContext context, UserManager<User> userManager)

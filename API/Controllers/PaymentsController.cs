@@ -28,6 +28,7 @@ public class PaymentsController(PaymentsService paymentService,
 
         if (context.ChangeTracker.HasChanges())
         {
+            
             var result = await context.SaveChangesAsync() > 0;
 
             if (!result) return BadRequest("Problem updating basket with intent");

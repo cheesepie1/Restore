@@ -1,0 +1,321 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/index-Cksk1leM.css",
+      "PackagePath": "staticwebassets/assets/index-Cksk1leM.css"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/index-DiTc4g02.js",
+      "PackagePath": "staticwebassets/assets/index-DiTc4g02.js"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-300-normal-DJfICpyc.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-300-normal-DJfICpyc.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-300-normal-Dg7J0kAT.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-300-normal-Dg7J0kAT.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-400-normal-BiRJyiea.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-400-normal-BiRJyiea.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-400-normal-JN0iKxGs.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-400-normal-JN0iKxGs.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-500-normal-YnJLGrUm.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-500-normal-YnJLGrUm.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-500-normal-_hamcpv8.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-500-normal-_hamcpv8.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-700-normal-BJaAVvFw.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-700-normal-BJaAVvFw.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-700-normal-jruQITdB.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-700-normal-jruQITdB.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-300-normal-BLLmCegk.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-300-normal-BLLmCegk.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-300-normal-Chhwl1Jq.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-300-normal-Chhwl1Jq.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-400-normal-D76n7Daw.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-400-normal-D76n7Daw.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-400-normal-b0JluIOJ.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-400-normal-b0JluIOJ.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-500-normal-37WQE4S0.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-500-normal-37WQE4S0.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-500-normal-BJvL3D7h.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-500-normal-BJvL3D7h.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-700-normal-CyZgh00P.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-700-normal-CyZgh00P.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-cyrillic-ext-700-normal-DXzexxfu.woff",
+      "PackagePath": "staticwebassets/assets/roboto-cyrillic-ext-700-normal-DXzexxfu.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-300-normal-Bx8edVml.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-greek-300-normal-Bx8edVml.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-300-normal-D3gN5oZ1.woff",
+      "PackagePath": "staticwebassets/assets/roboto-greek-300-normal-D3gN5oZ1.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-400-normal-IIc_WWwF.woff",
+      "PackagePath": "staticwebassets/assets/roboto-greek-400-normal-IIc_WWwF.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-400-normal-LPh2sqOm.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-greek-400-normal-LPh2sqOm.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-500-normal-Bg8BLohm.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-greek-500-normal-Bg8BLohm.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-500-normal-CdRewbqV.woff",
+      "PackagePath": "staticwebassets/assets/roboto-greek-500-normal-CdRewbqV.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-700-normal-1IZ-NEfb.woff",
+      "PackagePath": "staticwebassets/assets/roboto-greek-700-normal-1IZ-NEfb.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-greek-700-normal-Bs05n1ZH.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-greek-700-normal-Bs05n1ZH.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-300-normal-BZ6gvbSO.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-300-normal-BZ6gvbSO.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-300-normal-BizgZZ3y.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-300-normal-BizgZZ3y.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-400-normal-BVyCgWwA.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-400-normal-BVyCgWwA.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-400-normal-DXyFPIdK.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-400-normal-DXyFPIdK.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-500-normal-C6iW8rdg.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-500-normal-C6iW8rdg.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-500-normal-rpP1_v3s.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-500-normal-rpP1_v3s.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-700-normal-BWcFiwQV.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-700-normal-BWcFiwQV.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-700-normal-CbYYDfWS.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-700-normal-CbYYDfWS.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-300-normal-BzRVPTS2.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-300-normal-BzRVPTS2.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-300-normal-Djx841zm.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-300-normal-Djx841zm.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-400-normal-BSFkPfbf.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-400-normal-BSFkPfbf.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-400-normal-DgXbz5gU.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-400-normal-DgXbz5gU.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-500-normal-DvHxAkTn.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-500-normal-DvHxAkTn.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-500-normal-OQJhyaXd.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-500-normal-OQJhyaXd.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-700-normal-Ba-CAIIA.woff",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-700-normal-Ba-CAIIA.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-latin-ext-700-normal-DchBbzVz.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-latin-ext-700-normal-DchBbzVz.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-300-normal-CAomnZLO.woff",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-300-normal-CAomnZLO.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-300-normal-PZa9KE_J.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-300-normal-PZa9KE_J.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-400-normal-D5pJwT9g.woff",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-400-normal-D5pJwT9g.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-400-normal-DhTUfTw_.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-400-normal-DhTUfTw_.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-500-normal-LvuCHq7y.woff",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-500-normal-LvuCHq7y.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-500-normal-p0V0BAAE.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-500-normal-p0V0BAAE.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-700-normal-B4Nagvlm.woff",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-700-normal-B4Nagvlm.woff"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/assets/roboto-vietnamese-700-normal-CBbheh0s.woff2",
+      "PackagePath": "staticwebassets/assets/roboto-vietnamese-700-normal-CBbheh0s.woff2"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/hero1.jpg",
+      "PackagePath": "staticwebassets/images/hero1.jpg"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/hero2.jpg",
+      "PackagePath": "staticwebassets/images/hero2.jpg"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/hero3.jpg",
+      "PackagePath": "staticwebassets/images/hero3.jpg"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/hero4.png",
+      "PackagePath": "staticwebassets/images/hero4.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/boot-ang1.png",
+      "PackagePath": "staticwebassets/images/products/boot-ang1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/boot-ang2.png",
+      "PackagePath": "staticwebassets/images/products/boot-ang2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/boot-core1.png",
+      "PackagePath": "staticwebassets/images/products/boot-core1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/boot-core2.png",
+      "PackagePath": "staticwebassets/images/products/boot-core2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/boot-redis1.png",
+      "PackagePath": "staticwebassets/images/products/boot-redis1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/glove-code1.png",
+      "PackagePath": "staticwebassets/images/products/glove-code1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/glove-code2.png",
+      "PackagePath": "staticwebassets/images/products/glove-code2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/glove-react1.png",
+      "PackagePath": "staticwebassets/images/products/glove-react1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/glove-react2.png",
+      "PackagePath": "staticwebassets/images/products/glove-react2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/hat-core1.png",
+      "PackagePath": "staticwebassets/images/products/hat-core1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/hat-react1.png",
+      "PackagePath": "staticwebassets/images/products/hat-react1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/hat-react2.png",
+      "PackagePath": "staticwebassets/images/products/hat-react2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/sb-ang1.png",
+      "PackagePath": "staticwebassets/images/products/sb-ang1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/sb-ang2.png",
+      "PackagePath": "staticwebassets/images/products/sb-ang2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/sb-core1.png",
+      "PackagePath": "staticwebassets/images/products/sb-core1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/sb-core2.png",
+      "PackagePath": "staticwebassets/images/products/sb-core2.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/sb-react1.png",
+      "PackagePath": "staticwebassets/images/products/sb-react1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/images/products/sb-ts1.png",
+      "PackagePath": "staticwebassets/images/products/sb-ts1.png"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/Users/jinchaoli/Desktop/Restore/API/wwwroot/vite.svg",
+      "PackagePath": "staticwebassets/vite.svg"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.API.props",
+      "PackagePath": "build\\API.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.API.props",
+      "PackagePath": "buildMultiTargeting\\API.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.API.props",
+      "PackagePath": "buildTransitive\\API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

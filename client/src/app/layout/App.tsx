@@ -28,8 +28,8 @@ function App() {
         sx={{
           minHeight: '100vh',
           background: darkMode
-            ? 'radial-gradient(circle, #1e3aBa, #111B27)'
-            : 'radial-gradient(circle, #baecf9, #f0f9ff)',
+            ? 'radial-gradient(circle,rgb(4, 83, 112), #111B27)'
+            : 'radial-gradient(circle,rgb(115, 161, 204),rgb(217, 228, 235))',
           py: 6
         }}
       >

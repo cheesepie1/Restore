@@ -34,7 +34,7 @@ export default function ContactPage() {
                 backgroundRepeat: "no-repeat",
                 display: "flex",
                 alignItems: "center",
-                flexDirection: "column", // 垂直排列子元素
+                flexDirection: "column", 
                 justifyContent: "flex-start",
                 px: 2,
             }}

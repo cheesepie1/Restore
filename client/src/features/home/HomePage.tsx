@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
-    <Box maxWidth='xl' mx='auto' px={4} position='relative'>
-      <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' position='relative'>
+    <Box maxWidth='xl' mx='auto' px={4} position='relative' >
+      <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' position='relative' zIndex={1}>
         <img src="/images/hero1.jpg" alt="ski resort image"
           style={{
             position: 'absolute',
@@ -13,7 +13,7 @@ export default function HomePage() {
             height: '100%',
             objectFit: 'cover',
             borderRadius: '16px',
-            zIndex: 0
+            zIndex: -1
           }}
         />
         <Box
@@ -29,9 +29,10 @@ export default function HomePage() {
             fontWeight='bold'
             textAlign='center'
             sx={{ my: 3 }}
+            zIndex={0}
 
           >
-            Welcome to Restor!
+            Welcome to Restore!
 
           </Typography>
           <Button

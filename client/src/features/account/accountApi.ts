@@ -10,6 +10,8 @@ export const accountApi = createApi({
     baseQuery: baseQueryWithErrorHandling,
     tagTypes: ['UserInfo'],
     endpoints: (builder) => ({
+
+        // login mutation
         login: builder.mutation<void, LoginSchema>({
             query: (creds) => {
                 return {
@@ -21,12 +23,15 @@ export const accountApi = createApi({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     await queryFulfilled;
+                    // Invalidate cached user info so it can be refetched
                     dispatch(accountApi.util.invalidateTags(['UserInfo']))
                 } catch (error) {
                     console.log(error);
                 }
             },
         }),
+
+         // register mutation
         register: builder.mutation<void, object>({
             query: (creds) => {
                 return {
@@ -39,6 +44,7 @@ export const accountApi = createApi({
                 try {
                     await queryFulfilled;
                     toast.success("Registeration successful - you can sign in now!");
+                    // once register a user, leading to login 
                     router.navigate('/login');
                 } catch (error) {
                     console.log(error);
@@ -46,11 +52,14 @@ export const accountApi = createApi({
                 }
             },
         }),
+        // user-info query
         userInfo: builder.query<user, void>({
             query: () => 'account/user-info',
+            // set a tag for invalidation use
             providesTags: ['UserInfo']
 
         }),
+        // logout mutation
         logout: builder.mutation({
             query: () => ({
                 url: 'account/logout',
@@ -58,32 +67,38 @@ export const accountApi = createApi({
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 await queryFulfilled;
+                // once logout, clear userinfo and redirect to home page
                 dispatch(accountApi.util.invalidateTags(['UserInfo']));
                 router.navigate('/');
 
             },
         }),
+        // fetch address query
         fetchAddress: builder.query<Address, void>({
             query: () => ({
                 url: 'account/address'
             })
         }),
+        // update address mutation
         updateUserAddress: builder.mutation<Address, Address>({
             query: (address) => ({
                 url: 'account/address',
-                methos: 'POST',
+                method: 'POST',
                 body: address
             }),
             onQueryStarted: async (address, { dispatch, queryFulfilled }) => {
+                // save updated address to cache 
                 const patchResult = dispatch(
                     accountApi.util.updateQueryData('fetchAddress', undefined, (draft) => {
                         Object.assign(draft, { ...address })
                     })
                 );
                 try {
+                    // wait for the server response
                     await queryFulfilled;
 
                 } catch (error) {
+                    // if unsuccessful, then rollback the updated address in cache
                     patchResult.undo();
                     console.log(error);
 

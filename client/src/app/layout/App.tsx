@@ -6,10 +6,14 @@ import { useAppSelector } from "../store/store";
 
 
 function App() {
+  
+  // get darkmode state from redux store
   const { darkMode } = useAppSelector(state => state.ui)
 
+  // determine the palette mode based on darkMode
   const palleteType = darkMode ? 'dark' : 'light'
 
+  // custom theme with different palette mode and background
   const theme = createTheme({
     palette: {
       mode: palleteType,

@@ -10,7 +10,9 @@ type Props = {
 }
 
 export default function UserMenu({ user }: Props) {
+    // logput function from RTK query
     const [logout] = useLogoutMutation();
+    // state to control whether the menu is open or not
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {

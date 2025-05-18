@@ -30,12 +30,19 @@ const navStyles = {
 }
 
 export default function NavBar() {
-    const {data: user} =useUserInfoQuery();
+
+    // fetch user information
+    const { data: user } = useUserInfoQuery();
+
+    // get loading state and dark mode preference from the Redux store
     const { isLoading, darkMode } = useAppSelector(state => state.ui);
     const dispatch = useAppDispatch();
+
+    // fetch the user's shopping basket using a query hook
     const { data: basket } = useFetchBasketQuery();
 
-    const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) || 0
+    // calculate the total number of items in the existing basket, or set it 0 
+    const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
     return (
         <AppBar position="fixed">

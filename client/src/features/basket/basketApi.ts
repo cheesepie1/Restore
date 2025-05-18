@@ -4,6 +4,7 @@ import { Basket, Item } from "../../app/models/basket";
 import { Product } from "../../app/models/product";
 import Cookies from "js-cookie";
 
+// Type guard to check if the given object is a Basket Item (has a quantity field)
 function isBasketItem(product: Product | Item): product is Item {
     return (product as Item).quantity != undefined;
 }
@@ -13,10 +14,12 @@ export const basketApi = createApi({
     baseQuery: baseQueryWithErrorHandling,
     tagTypes: ['Basket'],
     endpoints: (builder) => ({
+        // to fetch the user's basket
         fetchBasket: builder.query<Basket, void>({
             query: () => 'basket',
             providesTags: ['Basket']
         }),
+        //to add an item to the basket
         addBasketItem: builder.mutation<Basket, { product: Product | Item, quantity: number }>({
             query: ({ product, quantity }) => {
                 const productId = isBasketItem(product) ? product.productId : product.id;
@@ -31,6 +34,7 @@ export const basketApi = createApi({
                     basketApi.util.updateQueryData('fetchBasket', undefined, (draft) => {
                         const productId = isBasketItem(product) ? product.productId : product.id;
 
+                        // Check if this is a new basket (no basketId yet)
                         if (!draft?.basketId) isNewBasket = true;
                         if (!isNewBasket) {
                             const existingItem = draft.items.find(item => item.productId === productId);
@@ -41,6 +45,7 @@ export const basketApi = createApi({
                 )
                 try {
                     await queryFulfilled;
+                    // If new basket was created, invalidate the cache to refetch
                     if (isNewBasket) dispatch(basketApi.util.invalidateTags(['Basket']))
                 } catch (error) {
                     console.log(error);
@@ -48,6 +53,7 @@ export const basketApi = createApi({
                 }
             }
         }),
+        //to remove an item or reduce its quantity
         removeBasketItem: builder.mutation<void, { productId: number, quantity: number }>({
             query: ({ productId, quantity }) => ({
                 url: `basket?productId=${productId}&quantity=${quantity}`,
@@ -59,6 +65,7 @@ export const basketApi = createApi({
                         const itemIndex = draft.items.findIndex(item => item.productId === productId);
                         if (itemIndex >= 0) {
                             draft.items[itemIndex].quantity -= quantity;
+                            // Remove item if quantity drops to 0
                             if (draft.items[itemIndex].quantity <= 0) {
                                 draft.items.splice(itemIndex, 1);
                             }

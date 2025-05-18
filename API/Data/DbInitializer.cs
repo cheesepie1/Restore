@@ -8,6 +8,7 @@ namespace API.Data;
 
 public class DbInitializer
 {
+    // start application: acceess/create database 
     public static async Task InitDb(WebApplication app)
     {
         using var scope = app.Services.CreateScope();
@@ -21,9 +22,11 @@ public class DbInitializer
         await SeedData(context, userManager);
     }
 
+    // write mock data: manager and common user info && products info
     private static async Task SeedData(StoreContext context, UserManager<User> userManager)
     {
         context.Database.Migrate();
+    
         if (!userManager.Users.Any())
         {
             var user = new User

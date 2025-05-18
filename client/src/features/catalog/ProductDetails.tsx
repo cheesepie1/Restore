@@ -8,9 +8,12 @@ export default function ProductDetails() {
     const { id } = useParams();
     const [removeBasketItem] = useRemoveBasketItemMutation();
     const [addBasketItem] = useAddBasketItemMutation();
+     // Find if this product already exists in the basket
     const { data: basket } = useFetchBasketQuery();
-    const item = basket?.items.find(x => x.productId === +id!); //3
-    const [quantity, setQuantity] = useState(0); // 5
+    const item = basket?.items.find(x => x.productId === +id!); 
+    const [quantity, setQuantity] = useState(1); 
+
+    // Sync quantity with basket if item is already in basket
     useEffect(() => {
         if (item) setQuantity(item.quantity);
     }, [item]);
@@ -21,12 +24,14 @@ export default function ProductDetails() {
 
     const handleUpdateBasket = () => {
         const updatedQuantity = item ? Math.abs(quantity - item.quantity) : quantity;
+        // If item is new or quantity increased, add items； otherwise, remove some from basket
         if (!item || quantity > item.quantity) {
             addBasketItem({ product, quantity: updatedQuantity })
         } else {
             removeBasketItem({ productId: product.id, quantity: updatedQuantity })
         }
     }
+    // Handle input change for quantity
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = +event.currentTarget.value;
         if (value >= 0) setQuantity(value)

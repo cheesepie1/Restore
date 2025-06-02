@@ -16,8 +16,7 @@ type Props = {
 }
 
 export default function Filters({filtersData: data}: Props) {
-
-
+    // Extract filter-related state from Redux store
     const { orderBy, types, brands } = useAppSelector(state => state.catalog);
     const dispatch = useAppDispatch();
 
@@ -38,6 +37,7 @@ export default function Filters({filtersData: data}: Props) {
                 <CheckboxButtons
                     items={data.brands}
                     checked={brands}
+                    // Update brands in state
                     onChange={(items: string[]) => dispatch(setBrands(items))}
                 />
 

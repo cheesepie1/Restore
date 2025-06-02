@@ -46,7 +46,6 @@ app.UseCors(opt =>
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Configure the HTTP request pipeline.
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<User>(); // api/login
 app.MapFallbackToController("Index", "Fallback");

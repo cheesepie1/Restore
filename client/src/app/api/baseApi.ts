@@ -4,29 +4,35 @@ import { toast } from "react-toastify";
 import { router } from "../routes/Routes";
 
 const customBaseQuery = fetchBaseQuery({
+    // API base URL from environment variable
     baseUrl: import.meta.env.VITE_API_URL,
+    // Include cookies with each request
     credentials: 'include'
 });
 
+// Using type guard to define possible error response shapes
 type ErrorResponse = | string | { title: string } | { errors: string[] };
 
+// simulate delay
 const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
 
 
 export const baseQueryWithErrorHandling = async (args: string | FetchArgs, api: BaseQueryApi,
     extraOptions: object) => {
     api.dispatch(startLoading())
+    //fake delay only in develop mode
     if (import.meta.env.DEV) await sleep();
     const result = await customBaseQuery(args, api, extraOptions);
     // console.log(result.error)
     api.dispatch(stopLoading());
     if (result.error) {
 
+        // Extract real status code (some parsing errors contain originalStatus)
         const originalStatus = result.error.status === 'PARSING_ERROR' && result.error.originalStatus
             ? result.error.originalStatus
             : result.error.status
         const responseData = result.error.data as ErrorResponse;
-
+         // Handle various HTTP error statuses
         switch (originalStatus) {
             case 400:
                 if (typeof responseData === 'string') toast.error(responseData);

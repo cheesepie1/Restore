@@ -29,40 +29,50 @@ export default function CheckoutStepper() {
     const stripe = useStripe();
     const [confirmationToken, setConfirmationToken] = useState<ConfirmationToken | null>(null);
     
+    // Destructure name and rest of address from fetched user data
     let name, restAddress;
     if (data) {
         ({name, ...restAddress} = data);
     }
 
+    // Move to next step or handle final submission
     const handleNext = async () => {
         if (activeStep === 0 && saveAddressChecked && elements) {
             const address = await getStripeAddress();
+             // Save address to user account
             if (address) await updateAddress(address);
         }
         if (activeStep == 1) {
             if (!elements || !stripe) return;
+            // Validate payment form
             const result = await elements.submit();
             if (result.error) return toast.error(result.error.message);
 
+            // Create a confirmation token for the payment
             const stripeResult = await stripe.createConfirmationToken({ elements });
             if (stripeResult.error) return toast.error(stripeResult.error.message);
             setConfirmationToken(stripeResult.confirmationToken);
         }
         if (activeStep === 2) {
+            // Final step: confirm the payment and place the order
             await confirmPayment();
         }
+        // Go to next step if not finished
         if (activeStep < 2) setActiveStep(step => step + 1);
     }
 
+    // Confirm Stripe payment and create order
     const confirmPayment = async () => {
         setSubmitting(true);
         try {
             if (!confirmationToken || !basket?.clientSecret)
                 throw new Error('Unable to process payment');
 
+            // Prepare order data and send it to backend
             const orderModel = await createOrderModel();
             const orderResult = await createOrder(orderModel);
 
+            // Confirm payment using Stripe SDK
             const paymentResult = await stripe?.confirmPayment({
                 clientSecret: basket.clientSecret,
                 redirect: 'if_required',
@@ -72,6 +82,7 @@ export default function CheckoutStepper() {
             });
             if (paymentResult?.paymentIntent?.status === 'succeeded') {
                 navigate('/checkout/success', { state: orderResult });
+                // Clear cart after checking out sucessfiully
                 clearBasket();
             }
             else if (paymentResult?.error) {
@@ -84,6 +95,7 @@ export default function CheckoutStepper() {
             if (error instanceof Error) {
                 toast.error(error.message)
             }
+            // Go back if failing
             setActiveStep(step => step - 1);
 
         }
@@ -92,6 +104,7 @@ export default function CheckoutStepper() {
         }
     }
 
+    // Create order model from Stripe data
     const createOrderModel = async () => {
         const shippingAddress = await getStripeAddress();
         const paymentSummary = confirmationToken?.payment_method_preview.card;
@@ -99,6 +112,7 @@ export default function CheckoutStepper() {
         return { shippingAddress, paymentSummary }
     }
 
+     // Extract address info from Stripe AddressElement
     const getStripeAddress = async () => {
         const addressElement = elements?.getElement('address');
         if (!addressElement) return null;
@@ -108,6 +122,7 @@ export default function CheckoutStepper() {
         return null;
     }
 
+     // Go to previous step
     const handleBack = () => {
         setActiveStep(step => step - 1);
     }

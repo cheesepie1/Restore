@@ -3,26 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class BuggyController: BaseApiController
+// only use to simulate different HTTP errors for testing purposes.
+public class BuggyController : BaseApiController
 {
     [HttpGet("not-found")]
     public IActionResult GetNotFound()
     {
         return NotFound();
     }
-     [HttpGet("bad-request")]
+    [HttpGet("bad-request")]
     public IActionResult GetBadRequest()
     {
         return BadRequest("This is not a good request");
     }
 
-     [HttpGet("unauthorised")]
+    [HttpGet("unauthorised")]
     public IActionResult GetUnauthorised()
     {
         return Unauthorized();
     }
 
-     [HttpGet("validation-error")]
+    [HttpGet("validation-error")]
     public IActionResult GetValidationError()
     {
         ModelState.AddModelError("Problem1", "This is the first error");
@@ -31,7 +32,7 @@ public class BuggyController: BaseApiController
         return ValidationProblem();
     }
 
-     [HttpGet("server-error")]
+    [HttpGet("server-error")]
     public IActionResult GetServerError()
     {
         throw new Exception("This is a server error");

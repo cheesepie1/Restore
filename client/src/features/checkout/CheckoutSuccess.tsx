@@ -9,18 +9,6 @@ export default function CheckoutSuccess() {
 
   if (!order) return <Typography>Problem accessing the order</Typography>
 
-  // const addressSring = () => {
-  //   const address = order.shippingAddress;
-
-  //   return `${address?.name}, ${address?.line1}, ${address?.city}, ${address?.state}, 
-  //           ${address?.postal_code}, ${address?.country}`
-  // }
-  // const paymentString = () => {
-  //   const card = order.paymentSummary;
-  //   return `${card?.brand?.toUpperCase()}, **** **** **** ${card?.last4},    
-  //           Exp ${card?.exp_month}/${card?.exp_year}`
-  // }
-
   return (
     <Container maxWidth='md'>
       <>

@@ -15,37 +15,45 @@ public class PaymentsController(PaymentsService paymentService,
     StoreContext context, IConfiguration config, ILogger<PaymentsController> logger) 
         : BaseApiController
 {
+    // Creates or updates a Stripe PaymentIntent based on the current basket
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<BasketDto>> CreatOrUpdatePaymentIntent()
     {
+        // Retrieve basket using cookie ID
         var basket = await context.Baskets.GetBasketWithItems(Request.Cookies["basketId"]);
         if (basket == null) return BadRequest("Problem with the basket");
+         // Create or update PaymentIntent on Stripe
         var intent = await paymentService.CreateOrUpdatePaymentIntent(basket);
         if (intent == null) return BadRequest("Problem creating payment intent");
+        // Store PaymentIntent details in the basket (first time only)
         basket.PaymentIntentId ??= intent.Id;
         basket.ClientSecret ??= intent.ClientSecret;
 
+        // Save changes to DB if there are modifications
         if (context.ChangeTracker.HasChanges())
         {
-            
+
             var result = await context.SaveChangesAsync() > 0;
 
             if (!result) return BadRequest("Problem updating basket with intent");
 
         }
-
+         // Return updated basket DTO
         return basket.ToDto();
 
     }
+     // Webhook endpoint for Stripe to notify payment status
     [HttpPost("webhook")]
     public async Task<IActionResult> StripeWebhook()
     {
+        // Read raw JSON from Stripe webhook request body
         var json = await new StreamReader(Request.Body).ReadToEndAsync();
 
         try
         {
             var stripeEvent = ConstructStripeEvent(json);
+            // Only process PaymentIntent events
             if (stripeEvent.Data.Object is not PaymentIntent intent)
             {
                 return BadRequest("Invalid event data");
@@ -69,13 +77,14 @@ public class PaymentsController(PaymentsService paymentService,
 
         }
     }
-
+     // Handles failed payments - restores product stock and updates order status
     private async Task HandlePaymentIntentFailed(PaymentIntent intent)
     {
         var order = await context.Orders
             .Include(x => x.OrderItems)
             .FirstOrDefaultAsync(x => x.PaymentIntentId == intent.Id)
                 ?? throw new Exception("Order not found");
+         // Restore stock for failed order
         foreach (var item in order.OrderItems)
         {
             var pproductItem = await context.Products
@@ -88,13 +97,15 @@ public class PaymentsController(PaymentsService paymentService,
         await context.SaveChangesAsync();
 
     }
-
+    // Handles successful payments - marks order as paid and deletes basket
     private async Task HandlePaymentIntentSucceeded(PaymentIntent intent)
     {
         var order = await context.Orders
             .Include(x => x.OrderItems)
             .FirstOrDefaultAsync(x => x.PaymentIntentId == intent.Id)
                 ?? throw new Exception("Order not found");
+
+        // Validate payment amount matches order total
         if (order.GetTotal() != intent.Amount)
         {
             order.OrderStatus = OrderStatus.PaymentMismatch;
@@ -105,13 +116,14 @@ public class PaymentsController(PaymentsService paymentService,
 
         }
         var basket = await context.Baskets.FirstOrDefaultAsync(x => x.PaymentIntentId == intent.Id);
-
+        // Remove basket since it's no longer needed
         if (basket != null) context.Baskets.Remove(basket);
 
         await context.SaveChangesAsync();
 
     }
 
+    // Validates and constructs a Stripe event from incoming webhook JSON
     private Event ConstructStripeEvent(string json)
     {
         try

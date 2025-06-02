@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Middleware;
 
+// Custom middleware to catch unhandled exceptions globally and return a structured error response.
 public class ExceptionMiddleware(IHostEnvironment env, ILogger<ExceptionMiddleware> logger) : IMiddleware
 {
+    // Main middleware entry point. Catches any exceptions thrown during request processing.
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
@@ -18,6 +20,9 @@ public class ExceptionMiddleware(IHostEnvironment env, ILogger<ExceptionMiddlewa
         }
     }
 
+
+
+ // Handles the exception and writes a custom JSON error response to the client.
     private async Task HandleException(HttpContext context, Exception ex)
     {
         logger.LogError(ex, ex.Message);
@@ -30,9 +35,11 @@ public class ExceptionMiddleware(IHostEnvironment env, ILogger<ExceptionMiddlewa
             Detail = env.IsDevelopment() ? ex.StackTrace?.ToString() : null,
             Title = ex.Message
         };
+        // Use camelCase naming in the JSON response for consistency with JavaScript clients.
         var options = new JsonSerializerOptions
-            {PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
+        { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
+        // Serialize the ProblemDetails object to JSON and write it to the response body.
         var json = JsonSerializer.Serialize(response, options);
         await context.Response.WriteAsync(json);
 

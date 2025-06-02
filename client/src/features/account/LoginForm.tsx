@@ -9,10 +9,12 @@ import { useLazyUserInfoQuery, useLoginMutation } from "./accountApi";
 export default function LoginForm() {
     const [login, { isLoading }] = useLoginMutation();
     const location = useLocation();
+    // get user info for ui info presentation. e.g. user profile/ access to inventory page if role is admin.
     const [fetchUserInfo] = useLazyUserInfoQuery();
 
     const { register, handleSubmit, formState: { errors } } = useForm<LoginSchema>({
         mode: 'onTouched',
+        //  Form Validation
         resolver: zodResolver(loginSchema)
     });
 

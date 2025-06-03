@@ -1,4 +1,4 @@
-import { Grid2, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import ProductList from "./ProductList";
 import { useFetchFiltersQuery, useFetchProductsQuery } from "./catalogApi";
 import Filters from "./Filters";
@@ -10,15 +10,15 @@ import { setPageNumber } from "./catalogSlice";
 export default function Catalog() {
   const productParams = useAppSelector(state => state.catalog);
   const { data, isLoading } = useFetchProductsQuery(productParams);
-  const { data: filtersData, isLoading: filtersLoading} = useFetchFiltersQuery();
+  const { data: filtersData, isLoading: filtersLoading } = useFetchFiltersQuery();
   const dispatch = useAppDispatch();
   if (isLoading || !data || !filtersData || filtersLoading) return <div>Loading...</div>
   return (
-    <Grid2 container spacing={4} >
-      <Grid2 size={3}>
+    <Grid container spacing={4} >
+      <Grid item xs={12} md={3}>
         <Filters filtersData={filtersData} />
-      </Grid2>
-      <Grid2 size={9}>
+      </Grid>
+      <Grid item xs={12} md={9}>
         {data.items && data.items.length > 0 ? (
           <>
             <ProductList products={data.items} />
@@ -40,8 +40,8 @@ export default function Catalog() {
         }
 
 
-      </Grid2>
+      </Grid>
 
-    </Grid2>
+    </Grid>
   )
 }

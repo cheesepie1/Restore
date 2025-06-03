@@ -42,7 +42,7 @@ export default function CheckoutSuccess() {
           <Divider />
           <Box display='flex' justifyContent='space-between'>
             <Typography variant="body2" color="textsecondary">
-              shippingAddress
+              shipping Address
 
             </Typography>
             <Typography variant="body2" fontWeight='bold'>

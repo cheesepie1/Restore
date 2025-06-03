@@ -6,6 +6,7 @@ import { setDarkMode } from "./uiSlice";
 import { useFetchBasketQuery } from "../../features/basket/basketApi";
 import UserMenu from "./UserMenu";
 import { useUserInfoQuery } from "../../features/account/accountApi";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const midLinks = [
     { title: 'catalog', path: '/catalog' },
@@ -44,30 +45,49 @@ export default function NavBar() {
     // calculate the total number of items in the existing basket, or set it 0 
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
         <AppBar position="fixed">
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box display='flex' alignItems='center'>
-                    <Typography component={NavLink} to='/' sx={navStyles} variant="h6">RE-STORE</Typography>
+                    <Typography
+                        component={NavLink}
+                        to='/'
+                        variant="h6"
+                        sx={{
+                            ...navStyles,
+                            fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis'
+                        }}
+                    >
+                        RE-STORE
+                    </Typography>
+
                     <IconButton onClick={() => dispatch(setDarkMode())}>
                         {darkMode ? <DarkMode /> : <LightMode sx={{ color: 'yellow' }} />}
                     </IconButton>
 
                 </Box>
+                {!isMobile && (
+                    <List sx={{ display: 'flex' }}>
+                        {midLinks.map(({ title, path }) => (
+                            <ListItem
+                                component={NavLink}
+                                to={path}
+                                key={path}
+                                sx={navStyles}
+                            >
+                                {title.toUpperCase()}
 
-                <List sx={{ display: 'flex' }}>
-                    {midLinks.map(({ title, path }) => (
-                        <ListItem
-                            component={NavLink}
-                            to={path}
-                            key={path}
-                            sx={navStyles}
-                        >
-                            {title.toUpperCase()}
+                            </ListItem>
+                        ))}
+                    </List>
+                )}
 
-                        </ListItem>
-                    ))}
-                </List>
                 <Box display='flex' alignItems='center'>
                     <IconButton component={Link} to='/basket' size="large" sx={{ color: 'inherit' }}>
                         <Badge badgeContent={itemCount} color="secondary">
@@ -84,7 +104,11 @@ export default function NavBar() {
                                     component={NavLink}
                                     to={path}
                                     key={path}
-                                    sx={navStyles}
+                                    sx={{
+                                        ...navStyles,
+                                        fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' }  // 添加响应式字体大小
+                                    }}
+
                                 >
                                     {title.toUpperCase()}
 

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { Button, Divider, Grid2, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
+import { Button, Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 import { useFetchProductDetailsQuery } from "./catalogApi";
 import { useAddBasketItemMutation, useFetchBasketQuery, useRemoveBasketItemMutation } from "../basket/basketApi";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -8,10 +8,10 @@ export default function ProductDetails() {
     const { id } = useParams();
     const [removeBasketItem] = useRemoveBasketItemMutation();
     const [addBasketItem] = useAddBasketItemMutation();
-     // Find if this product already exists in the basket
+    // Find if this product already exists in the basket
     const { data: basket } = useFetchBasketQuery();
-    const item = basket?.items.find(x => x.productId === +id!); 
-    const [quantity, setQuantity] = useState(1); 
+    const item = basket?.items.find(x => x.productId === +id!);
+    const [quantity, setQuantity] = useState(1);
 
     // Sync quantity with basket if item is already in basket
     useEffect(() => {
@@ -45,20 +45,29 @@ export default function ProductDetails() {
         { lable: 'Quantity in stock', value: product.quantityInStock }
     ]
     return (
-        <Grid2 container spacing={6} maxWidth='lg' sx={{ mx: 'auto' }}>
-            <Grid2 size={6}>
-                <img src={product?.pictureUrl} alt={product.name} style={{ width: '100%' }} />
-            </Grid2>
-            <Grid2 size={6}>
-                <Typography variant='h3'>
+        <Grid container spacing={6}   sx={{
+            mx: 'auto',
+            maxWidth: { xs: '100%', sm: '600px', md: '900px', lg: '1200px' },
+            px: { xs: 2, sm: 3, md: 4 }
+          }}>
+            <Grid item xs={12} md={6}>
+                <img src={product?.pictureUrl} alt={product.name} style={{ width: '80%' }} />
+            </Grid>
+            <Grid item xs={12} md={6} >
+                <Typography variant='h3' sx={{
+                    fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
+                    textAlign: { xs: 'center', md: 'left' }
+                }}>
                     {product.name}
                 </Typography>
                 <Divider sx={{ mb: 2 }} />
-                <Typography variant="h4" color="secondary">${(product.price / 100).toFixed(2)}</Typography>
+                <Typography variant="h4" color="secondary" sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, textAlign: { xs: 'center', md: 'left' } }}>
+                    ${(product.price / 100).toFixed(2)}
+                </Typography>
 
-                <TableContainer>
+                <TableContainer >
 
-                    <Table sx={{ '& td': { fontSize: '1rem' } }}>
+                    <Table sx={{ '& td': { fontSize: { xs: '0.8rem', md: '1rem' } } }}>
                         <TableBody>
 
                             {productDetails.map((detail, index) => (
@@ -78,8 +87,8 @@ export default function ProductDetails() {
                     </Table>
 
                 </TableContainer>
-                <Grid2 container spacing={2} marginTop={3}>
-                    <Grid2 size={6}>
+                <Grid container spacing={2} marginTop={3} justifyContent="center">
+                    <Grid item xs={12} sm={6}>
                         <TextField
                             variant="outlined"
                             type="number"
@@ -89,8 +98,8 @@ export default function ProductDetails() {
                             onChange={handleInputChange}
 
                         />
-                    </Grid2>
-                    <Grid2 size={6}>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
                         <Button
                             onClick={handleUpdateBasket}
                             disabled={quantity === item?.quantity || !item && quantity === 0}
@@ -103,9 +112,9 @@ export default function ProductDetails() {
                             {item ? 'Update quantity' : 'Add to basket'}
                         </Button>
 
-                    </Grid2>
-                </Grid2>
-            </Grid2>
-        </Grid2>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
     )
 }

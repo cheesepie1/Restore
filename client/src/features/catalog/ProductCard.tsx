@@ -15,7 +15,7 @@ export default function ProductCard({ product }: Props) {
         <Card
             elevation={3}
             sx={{
-                width: 280,
+                width: '100%',
                 borderRadius: 2,
                 display: 'flex',
                 flexDirection: 'column',

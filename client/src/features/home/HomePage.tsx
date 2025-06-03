@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function HomePage() {
   return (
     <Box maxWidth='xl' mx='auto' px={4} position='relative' >
-      <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' position='relative' zIndex={1}>
+      <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' position='relative' zIndex={1} minHeight={{ xs: '100vh', md: '80vh' }}>
         <img src="/images/hero1.jpg" alt="ski resort image"
           style={{
             position: 'absolute',
@@ -28,7 +28,9 @@ export default function HomePage() {
             color="white"
             fontWeight='bold'
             textAlign='center'
-            sx={{ my: 3 }}
+            sx={{     
+              my: 3,
+              fontSize: { xs: '2rem', sm: '3rem', md: '4rem' } }}
             zIndex={0}
 
           >
@@ -46,8 +48,9 @@ export default function HomePage() {
               fontWeight: 'bold',
               color: 'white',
               borderRadius: '16px',
-              px: 8,
-              py: 2,
+              px: { xs: 4, sm: 6, md: 8 },
+              py: { xs: 1, sm: 1.5, md: 2 },
+              fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
               border: '2px solid transparent'
 
             }}

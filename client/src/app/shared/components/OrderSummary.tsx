@@ -4,12 +4,22 @@ import { Link, useLocation } from "react-router-dom";
 import { useBasket } from "../../../lib/hooks/useBasket";
 
 export default function OrderSummary() {
-    const { subtotal, deliveryFee} = useBasket();
+    const { subtotal, deliveryFee } = useBasket();
     const location = useLocation();
 
     return (
-        <Box display="flex" flexDirection="column" alignItems="center" maxWidth="lg" mx="auto">
-            <Paper sx={{ mb: 2, p: 3, width: '100%', borderRadius: 3 }}>
+        <Box display="flex" flexDirection="column" alignItems="center" sx={{
+            mx: 'auto',
+            px: { xs: 2, sm: 3, md: 4 },
+            maxWidth: { xs: '100%', sm: '600px', md: '800px', lg: '1000px' }
+        }}>
+            <Paper sx={{
+                mb: 2,
+                p: { xs: 2, sm: 3 },
+                width: '100%',
+                borderRadius: 3,
+                boxShadow: { xs: 2, md: 3 }
+            }}>
 
                 <Typography variant="h6" component="p" fontWeight="bold">
                     Order summary
